@@ -1,0 +1,45 @@
+/*Piezo Speaker Review Challenge
+   4 Play differennt tones with 3 different buttons
+*/
+
+//Piezo speaker pin
+int p = 2;
+
+//Button's pin
+int x = 9;
+int y = 11;
+int z = 13;
+
+
+void setup() {
+  //Piezo
+  pinMode(p, OUTPUT);
+
+  //Button a
+  pinMode(x, INPUT);
+
+  //Button b
+  pinMode(y, INPUT);
+
+  //Button c
+  pinMode(z, INPUT);
+
+
+}
+
+void loop() {
+
+  int a = digitalRead(x);                           //Read the values of the three buttons
+  int b = digitalRead(y);
+  int c = digitalRead(z);
+
+  if (a == HIGH && b == LOW && c == LOW) {          // If electricity is going to button a, play frequency 250 when button is pushed
+    tone(p, 250);
+  } else if (a == LOW && b == HIGH && c == LOW) {   // If electricity is going to button a, play frequency 250 when button is pushed
+    tone(p, 500);
+  } else if (a == LOW && b == LOW && c == HIGH) {   // If electricity is going to button a, play frequency 250 when button is pushed
+    tone(p, 750);
+  } else {
+    noTone(p);                                      //If previous tones are not being played, do not play anything
+  }
+}
